@@ -16,7 +16,7 @@
 class TForm1 : public TForm
 {
 __published:	// IDE-managed Components
-	TOpenPictureDialog *OpenPictureDialog1;
+	TOpenPictureDialog *OpenPictureDialog;
 	TMainMenu *MainMenu1;
 	TMenuItem *FileMenu;
 	TMenuItem *OpenMenu;
@@ -29,13 +29,13 @@ __published:	// IDE-managed Components
 	TImage *Image;
 	TImage *LevelsImage;
 	TLabel *InputMinLabel;
-	TEdit *InputMin;
+	TEdit *InputMinEdit;
 	TLabel *InputMaxLabel;
-	TEdit *InputMax;
+	TEdit *InputMaxEdit;
 	TLabel *OutputMinLabel;
-	TEdit *OutputMin;
+	TEdit *OutputMinEdit;
 	TLabel *OutputMaxLabel;
-	TEdit *OutputMax;
+	TEdit *OutputMaxEdit;
 	TButton *ResetButton;
 	TButton *OkButton;
 	TImage *CurveImage;
@@ -43,7 +43,32 @@ __published:	// IDE-managed Components
 	TLabel *ArrowLabel;
 	TLabel *FinalLabel;
 	TButton *CurveResetButton;
+	void __fastcall OpenMenuClick(TObject *Sender);
+	void __fastcall DrawLevelsLine(int InputMin,int InputMax,int OutputMin,int OutputMax);
+	void __fastcall ChangeLevelsImage(int InputMin,int InputMax,int OutputMin,int OutputMax);
+	void __fastcall OkButtonClick(TObject *Sender);
+	void __fastcall DrawCurveLine();
+	int __fastcall Curve(int X);
+	void __fastcall ResetButtonClick(TObject *Sender);
+    void __fastcall ChangeCurveImage(TObject *Sender);
+	void __fastcall CurveImageMouseMove(TObject *Sender, TShiftState Shift, int X, int Y);
+	void __fastcall CurveImageMouseDown(TObject *Sender, TMouseButton Button, TShiftState Shift,
+          int X, int Y);
+
+
 private:	// User declarations
+	int InputMin;
+	int InputMax;
+	int OutputMin;
+	int OutputMax;
+	int i;
+	int j;
+	int k;
+	Byte * ImageRow;
+	int Height;
+	int Width;
+	int x;
+	int y;
 public:		// User declarations
 	__fastcall TForm1(TComponent* Owner);
 };

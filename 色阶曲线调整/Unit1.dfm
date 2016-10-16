@@ -3,7 +3,7 @@ object Form1: TForm1
   Top = 0
   Caption = 'Form1'
   ClientHeight = 519
-  ClientWidth = 776
+  ClientWidth = 771
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -28,6 +28,7 @@ object Form1: TForm1
         Top = 32
         Width = 394
         Height = 417
+        Stretch = True
       end
     end
   end
@@ -36,12 +37,10 @@ object Form1: TForm1
     Top = 0
     Width = 377
     Height = 521
-    ActivePage = LevelsPage
+    ActivePage = CurvePage
     TabOrder = 1
     object LevelsPage: TTabSheet
       Caption = 'Levels'
-      ExplicitLeft = 15
-      ExplicitTop = 48
       object LevelsImage: TImage
         Left = 56
         Top = 32
@@ -76,37 +75,37 @@ object Form1: TForm1
         Height = 13
         Caption = 'OutputMax : '
       end
-      object InputMin: TEdit
+      object InputMinEdit: TEdit
         Left = 114
         Top = 325
         Width = 47
         Height = 21
         TabOrder = 0
-        Text = 'InputMin'
+        Text = '0'
       end
-      object InputMax: TEdit
+      object InputMaxEdit: TEdit
         Left = 270
         Top = 325
         Width = 51
         Height = 21
         TabOrder = 1
-        Text = 'InputMax'
+        Text = '255'
       end
-      object OutputMin: TEdit
+      object OutputMinEdit: TEdit
         Left = 114
         Top = 365
         Width = 47
         Height = 21
         TabOrder = 2
-        Text = 'OutputMin'
+        Text = '0'
       end
-      object OutputMax: TEdit
+      object OutputMaxEdit: TEdit
         Left = 270
         Top = 365
         Width = 51
         Height = 21
         TabOrder = 3
-        Text = 'OutputMax'
+        Text = '255'
       end
       object ResetButton: TButton
         Left = 64
@@ -115,6 +114,7 @@ object Form1: TForm1
         Height = 25
         Caption = 'Reset'
         TabOrder = 4
+        OnClick = ResetButtonClick
       end
       object OkButton: TButton
         Left = 232
@@ -123,6 +123,7 @@ object Form1: TForm1
         Height = 25
         Caption = 'Ok'
         TabOrder = 5
+        OnClick = OkButtonClick
       end
     end
     object CurvePage: TTabSheet
@@ -131,32 +132,34 @@ object Form1: TForm1
       object CurveImage: TImage
         Left = 56
         Top = 32
-        Width = 256
-        Height = 256
+        Width = 255
+        Height = 255
+        OnMouseDown = CurveImageMouseDown
+        OnMouseMove = CurveImageMouseMove
       end
       object FormerLabel: TLabel
-        Left = 80
+        Left = 112
         Top = 320
-        Width = 59
+        Width = 6
         Height = 13
-        Caption = 'FormerLabel'
+        Caption = '0'
       end
       object ArrowLabel: TLabel
-        Left = 152
+        Left = 176
         Top = 320
         Width = 24
         Height = 13
         Caption = '---->'
       end
       object FinalLabel: TLabel
-        Left = 192
+        Left = 240
         Top = 320
-        Width = 47
+        Width = 6
         Height = 13
-        Caption = 'FinalLabel'
+        Caption = '0'
       end
       object CurveResetButton: TButton
-        Left = 152
+        Left = 160
         Top = 368
         Width = 75
         Height = 25
@@ -165,7 +168,7 @@ object Form1: TForm1
       end
     end
   end
-  object OpenPictureDialog1: TOpenPictureDialog
+  object OpenPictureDialog: TOpenPictureDialog
     Left = 736
     Top = 32
   end
@@ -176,6 +179,7 @@ object Form1: TForm1
       Caption = 'File'
       object OpenMenu: TMenuItem
         Caption = 'Open'
+        OnClick = OpenMenuClick
       end
     end
     object ImageMenu: TMenuItem
